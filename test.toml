@@ -1,0 +1,16 @@
+template = "{{.Greeting}} - {{.Date}} - {{.Bspwm}}"
+
+[[sources]]
+name="greeting"
+type="timer:5s"
+script="echo -n Hello $USER"
+
+[[sources]]
+name="date"
+type="timer:1s"
+script="echo -n $(date)"
+
+[[sources]]
+name="bspwm"
+type="listen"
+script="bspc subscribe report"
