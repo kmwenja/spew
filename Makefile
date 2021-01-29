@@ -1,9 +1,15 @@
+PREFIX ?= "/usr/bin/"
+
 all: build
 
 build:
-	go build -o spew .
+	mkdir -p bin
+	go build -o bin/spew ./cmd/spew
 
 run: build
-	./spew test.toml
+	bin/spew bin/test.toml
 
-.PHONY = build
+install: build
+	install -m 755 ./bin/spew $(PREFIX)/spew
+
+.PHONY = build run install
